@@ -47,4 +47,23 @@ class ChatServerChatroomSpec extends Specification {
         server.getChatroom(0) == chatroom
     }
 
+    def "We should not be able to create another room with a name that already exist for an existing room"(){
+        given: " A server"
+        def server = new ChatServer(ChatInstance.initEmptyChat(),null,null)
+
+        server.addChatroom("1st chatroom",null)
+
+        when: "A new chatroom is created"
+        server.addChatroom("1st chatroom",null)
+        boolean duplicates=false;
+        for (int j=0;j<server.currentChatroomNames.size();j++)
+            for (int k=j+1;k<server.currentChatroomNames.size();k++)
+                if (k!=j && server.currentChatroomNames[k] == server.currentChatroomNames[j])
+                    duplicates=true;
+
+
+        then: "The new chatroom must not be added to the model, cause it has the same name with the first chatroom"
+        duplicates == false
+
+    }
 }
