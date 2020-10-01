@@ -274,16 +274,20 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public int addChatroom(String chatroomName, UserInfo owner) {
 
-        // instantiate the chatroom
-        final Chatroom<T> newChatroom = new Chatroom<>(chatroomName, owner, new ArrayList<>());
+        if(!getCurrentChatroomNames().contains(chatroomName)){
+            // instantiate the chatroom
+            final Chatroom<T> newChatroom = new Chatroom<>(chatroomName, owner, new ArrayList<>());
 
-        // add it in the model
-        final int newChatroomId = chatInstance.addChatroom(newChatroom);
+            // add it in the model
+            final int newChatroomId = chatInstance.addChatroom(newChatroom);
 
-        /* maybe I should notify clients about the new chatroom ?? */
-        notifyNewChatroom(newChatroom);
+            /* maybe I should notify clients about the new chatroom ?? */
+            notifyNewChatroom(newChatroom);
 
-        return newChatroomId;
+            return newChatroomId;
+        } else {
+            return 0;
+        }
     }
 
     /**
