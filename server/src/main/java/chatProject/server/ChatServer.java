@@ -322,7 +322,8 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     @Override
     public Message<T> addMessage(int chatroomId, UserInfo user, T content) {
-        Message<T> newMessage = getChatroom(chatroomId).addMessage(user, content);
+        System.out.println(content);
+     Message<T> newMessage = getChatroom(chatroomId).addMessage(user, content);
         notifyNewMessage(chatroomId, newMessage);
         // return new created message
         return newMessage;
