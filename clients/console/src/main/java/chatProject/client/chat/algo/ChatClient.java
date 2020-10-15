@@ -228,7 +228,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public int addChatroom(String chatroomName, UserInfo owner) {
         try {
-            final String response = Request.Put(serverUrl + "/chatroom/" + chatroomName).bodyString(
+            final String response = Request.Put(serverUrl + "/chatroom/" + chatroomName.replace(" ","_")).bodyString(
                     json.toJson(owner),
                     ContentType.APPLICATION_JSON
             ).execute().returnContent().asString();
