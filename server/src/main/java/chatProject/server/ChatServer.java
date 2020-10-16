@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  */
 public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>, AutoCloseable {
 
-    private static AtomicLong counterId = new AtomicLong(0);
+    private static final AtomicLong counterId = new AtomicLong(0);
     /**
      * The model for the chat.
      */

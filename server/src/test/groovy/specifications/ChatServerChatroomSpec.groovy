@@ -55,11 +55,11 @@ class ChatServerChatroomSpec extends Specification {
 
         when: "A new chatroom is created"
         server.addChatroom("1st chatroom",null)
-        boolean duplicates=false;
+        boolean duplicates=false
         for (int j=0;j<server.currentChatroomNames.size();j++)
             for (int k=j+1;k<server.currentChatroomNames.size();k++)
                 if (k!=j && server.currentChatroomNames[k] == server.currentChatroomNames[j])
-                    duplicates=true;
+                    duplicates=true
 
 
         then: "The new chatroom must not be added to the model, cause it has the same name with the first chatroom"
