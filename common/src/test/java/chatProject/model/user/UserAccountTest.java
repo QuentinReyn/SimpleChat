@@ -7,6 +7,19 @@ import static org.junit.Assert.*;
 public class UserAccountTest {
 
     @Test
+    public void testNewUser() {
+        final UserAccount user = new UserAccount(1, "username");
+        assertTrue(user instanceof UserAccount);
+    }
+
+    @Test
+    public void testIdUser() {
+        final UserAccount user = new UserAccount(1, "username");
+        assertEquals("The id should be the one set in the constructor",
+                1, user.getId());
+    }
+
+    @Test
     public void getUsername() {
 
         final String username = "My user";
