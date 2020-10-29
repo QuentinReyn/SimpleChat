@@ -25,6 +25,8 @@ public interface ChatroomAlgo<T> extends ChatroomsListener<T> {
      */
     Chatroom<T> getChatroom(int chatroomId);
 
+    List<Chatroom<T>> getChatrooms();
+
     /**
      * Adds a new {@link Chatroom} in the model and notifies clients about it.
      * @param chatroomName the name of the chatroom to create
